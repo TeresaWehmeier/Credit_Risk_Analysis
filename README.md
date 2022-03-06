@@ -14,9 +14,14 @@ This analysis will use the LoanStats_2019Q1.csv dataset, imbalanced-learn and sc
 ## Results
 Bulleted list describes balanced accuracy score and the precision and recall scores of all six machine learning models.
 
-|Model  | Balanced Accuracy | Precision | Recall Score |
-|-------|-------------------|-----------|--------------|
-
+| Model             | Balanced Accuracy | Precision | Recall Score |
+|-------------------|-------------------|-----------|--------------|
+| Random OverSample |
+| Smote OverSample  |
+| Cluster Centroid  |
+| Smoteen           |
+| Bal Random Forest |
+| EE Classifying    |
 
 ## Summary
 Summarized results
