@@ -70,9 +70,9 @@ For each model, a summative report shows the accuracy score, confusion matrix an
 
 <img src="images/easy_ensemble_classifier_report.png" width="50%" height="30%">
 
-First we look at the accuracy scores to determine the percent of true positives plus true negatives divided by all observations. Accuracy scores help narrow down our analysis by eliminating those observations that are returning too many false returns. In the case of the credit risk analysis, what percent of high and low risk observations are identified and are actually true. Models below listed by accuracy in descending order (A), with precision (P) and recall (R) following:
+The first step is to evaluate accuracy, looking for results as close to 1 as possible (100%). Accuracy scores help narrow down our analysis by eliminating those observations that are returning too many false returns. In the case of the credit risk analysis, the percent of high and low risk observations are identified and are actually true. The next step is to look at precision, and determine how precise predicted high and low risk evaluates to actual results. The final step is to examine recall (sensitivity), which attempts to balance high and low risk predictors. Models below listed by accuracy in descending order (A), with precision (P) and recall (R) following:
 
-### Accuracy
+### Breakdown by Accuracy, Precision and Recall
 * Easy Ensemble Classifying - A: 93%; P: high= 9%; low= 100%; R: high= 92%; low= 94%
 * Balanced Random Forest Classifying - A: 68%; P: high= 88%; low= 100%; R: high= 37%; low= 100%
 * SMOTEEN Sampling - A: 67%; P: high= 1%; low= 100%; R: high= 77%; low= 57%
@@ -80,22 +80,19 @@ First we look at the accuracy scores to determine the percent of true positives 
 * SMOTE oversampling - A: 66%; P: high= 1%; low= 100%; R: high= 72%; low= 60%
 * Cluster Centroid undersampling - A: 54%; P: high= 1%; low= 100%; R: high= 69%; low= 40%
 
+## Summary
+The precision results show an anomaly, and I was unable to determine if it was an error in my code or an accurate result. When running the balance random forest analysis, precision for high credit risk predicted was consistently 88%. Precision is calculated as the total true predicted high risk divided by the total true predicted plus the total false predicted. The confusion matrix for this model was:
 
-The precision results above show an anomaly, and I was unable to determine if it was an error in my code or an accurate result. When running the balance random forest analysis, precision for high credit risk predicted was consistently 88%. Precision is calculated as the total true predicted high risk divided by the total true predicted plus the total false predicted. The confusion matrix for this model was:
 | Risk Level | Predicted High Risk | Predicted Low Risk |
 |------------|---------------------|--------------------|
 | High       |       37            |        64          |
 | Low        |        5            |     17099          |
 
-Since there are significant numbers of actual high risk predicted to be low risk (64 in confusion matrix), I elected to exclude this model from a valid credit risk predictor. The easy Ensemble Classifying model 
+Since there are significant numbers of actual high risk predicted to be low risk (64 in confusion matrix), I elected to exclude this model from a valid credit risk predictor in my final analysis until a team member can evaluate my code for accuracy.
 
-Finally we look at the recall, or sensitivity, of the data model. Recall shows the total number of true positives divided by the total true positives and false negative results. In the case of the credit risk analysis, recall shows the number of actual high risk, and of those, the number that were pedicted high risk and those that were not predicted to be a high risk. The results are summarized below. 
-### Precision
-* Easy Ensemble Classifying - high= 9%; low= 100%
-* Balanced Random Forest Classifying - high= 88%; low= 100%
-* SMOTEEN Sampling - high= 1%; low= 100%
-* Random, SMOTE oversampling, and Cluster Centroid undersampling - high= 1%; low= 100%
+Evaluating the remaining models, Easy Ensemble has a high accuracy rate (93%), while all other accuracy scores were below 70%, which I felt to be too low when attempting to predict credit risk. Easy ensemble precision rates were within acceptable parameters if slightly higher than I would prefer for high risk prediction (9%), while all other precision results were the same (1% high risk, 100% low risk). Recall rates for Easy ensesmble model were well balanced and close to 1 (high risk = 92%; low risk = 94%), while all other models had a variance between high and low I considered to be too broad for an effective credit risk prediction model.
+
+Based on the above analysis, the Easy Ensemble model ticks all the parameters for a good prediction of credit risk.
 
 
-## Summary
 
