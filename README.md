@@ -3,7 +3,7 @@
 ## Overview
 The purpose of the analysis is to find a predictive model that balances precision and sensitivity (recall) in the data, and thereby reduces the chance of predicting too many high or low risk results in the analysis.
 
-The credit risk analysis examines data from LendingClub, a peer-to-peer lending service company. Credit risk is an unbalanced classification problem, because good loans easily outnumber risky loans. Therefore, the research department has been tasked with employing different machine learning techniques to train and evaluate models using resaampling.
+The credit risk analysis examines data from LendingClub, a peer-to-peer lending service company. Credit risk is an unbalanced classification problem, because good loans easily outnumber risky loans. Therefore, the research department has been tasked with employing different machine learning techniques to train and evaluate models using resampling.
 
 This analysis will use the LoanStats_2019Q1.csv dataset, and imbalanced-learn and scikit-learn libraries to perform the analysis. The following models will be used in the analysis:
 * Naive Random Oversampling
