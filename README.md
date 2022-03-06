@@ -14,7 +14,7 @@ This analysis will use the LoanStats_2019Q1.csv dataset, and imbalanced-learn an
 * Easy Ensemble Classifying
 
 ## Results
-For each model, a summative report shows the accuracy score, confusion matrix and classification report displayed below. These scores are key indicators to determine a balance between precision and sensitivity that will help eliminate results that identify low risk credit results as high risk, and visa versa. 
+For each model, a summative report shows the accuracy score, confusion matrix and classification report displayed below. These scores are key indicators to determine a balance between precision and sensitivity that will help eliminate false positives and negatives. 
 
 ### Naive Random OverSampling
 * Accuracy score: 66%
@@ -70,13 +70,32 @@ For each model, a summative report shows the accuracy score, confusion matrix an
 
 <img src="images/easy_ensemble_classifier_report.png" width="50%" height="30%">
 
-## Summary
-First we look at the accuracy scores to determine the percent of true positives plus true negatives divided by all observations. Accuracy scores help narrow down our analysis by eliminating those observations that are returning too many false returns. In the case of the credit risk analysis, what percent of high and low risk observations are identified and are actually true. Accuracy in descending order:
-* Easy Ensemble Classifying - 93%
-* Balanced Random Forest Classifying - 68%
-* SMOTEEN Sampling - 67%
-* Both Random and SMOTE oversampling - 66%
-* Cluster Centroid undersampling - 54%
+First we look at the accuracy scores to determine the percent of true positives plus true negatives divided by all observations. Accuracy scores help narrow down our analysis by eliminating those observations that are returning too many false returns. In the case of the credit risk analysis, what percent of high and low risk observations are identified and are actually true. Models below listed by accuracy in descending order (A), with precision (P) and recall (R) following:
 
-Second we look at the precision of the data model. Precision shows the total number of true positives divided by the total true and false positive results. 
+### Accuracy
+* Easy Ensemble Classifying - A: 93%; P: high= 9%; low= 100%; R: high= 92%; low= 94%
+* Balanced Random Forest Classifying - A: 68%; P: high= 88%; low= 100%; R: high= 37%; low= 100%
+* SMOTEEN Sampling - A: 67%; P: high= 1%; low= 100%; R: high= 77%; low= 57%
+* Random Oversampling - A: 66%; P: high= 1%; low= 100%; R: high= 69%; low= 40%
+* SMOTE oversampling - A: 66%; P: high= 1%; low= 100%; R: high= 72%; low= 60%
+* Cluster Centroid undersampling - A: 54%; P: high= 1%; low= 100%; R: high= 69%; low= 40%
+
+
+The precision results above show an anomaly, and I was unable to determine if it was an error in my code or an accurate result. When running the balance random forest analysis, precision for high credit risk predicted was consistently 88%. Precision is calculated as the total true predicted high risk divided by the total true predicted plus the total false predicted. The confusion matrix for this model was:
+| Risk Level | Predicted High Risk | Predicted Low Risk |
+|------------|---------------------|--------------------|
+| High       |       37            |        64          |
+| Low        |        5            |     17099          |
+
+Since there are significant numbers of actual high risk predicted to be low risk (64 in confusion matrix), I elected to exclude this model from a valid credit risk predictor. The easy Ensemble Classifying model 
+
+Finally we look at the recall, or sensitivity, of the data model. Recall shows the total number of true positives divided by the total true positives and false negative results. In the case of the credit risk analysis, recall shows the number of actual high risk, and of those, the number that were pedicted high risk and those that were not predicted to be a high risk. The results are summarized below. 
+### Precision
+* Easy Ensemble Classifying - high= 9%; low= 100%
+* Balanced Random Forest Classifying - high= 88%; low= 100%
+* SMOTEEN Sampling - high= 1%; low= 100%
+* Random, SMOTE oversampling, and Cluster Centroid undersampling - high= 1%; low= 100%
+
+
+## Summary
 
