@@ -14,7 +14,7 @@ This analysis will use the LoanStats_2019Q1.csv dataset, and imbalanced-learn an
 * Easy Ensemble Classifying
 
 ## Results
-For each model, a summative report shows the accuracy score, confusion matrix and classification report displayed below. These scores are the key elements to help determine a balance between precision and sensitivity that will help eliminate results that identify low risk credit results as high risk. 
+For each model, a summative report shows the accuracy score, confusion matrix and classification report displayed below. These scores are key indicators to determine a balance between precision and sensitivity that will help eliminate results that identify low risk credit results as high risk, and visa versa. 
 
 ### Naive Random OverSampling
 * Accuracy score: 66%
